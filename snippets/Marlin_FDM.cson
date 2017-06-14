@@ -1,0 +1,217 @@
+'source.gcode':
+	## G codes
+	#Basic Commands
+	'Rapid  positioning - Rapid':
+		'prefix':'Rapid'
+		'body':'G00'
+	'Rapid positioning - Move_rapid':
+		'prefix':'Move_rapid'
+		'body':'G00'
+	'Linear Interpolation':
+		'prefix':'Move'
+		'body':'G01'
+	'Circular Interpolation (Clockwise)':
+		'prefix':'ARC CW'
+		'body':'G02'
+	'Circular Interpolation (Anticlockwise)':
+		'prefix':'ARC AW'
+		'body':'G03'
+	'Dwell':
+		'prefix':'Dwell'
+		'body':'G04'
+	'Retract':
+		'prefix':'Retract'
+		'body':'G10'
+	'Unretract':
+		'prefix':'Unretract'
+		'body':'G11'
+	#Units
+	'Inch Units - USCS':
+		'prefix':'USCS Units'
+		'body':'G20'
+	'Inch Units - Imperial':
+		'prefix':'Imperial Units'
+		'body':'G20'
+	'Inch Units - Inches':
+		'prefix':'Inches'
+		'body':'G20'
+	'Metric - Metric':
+		'prefix':'Metric Units'
+		'body':'G21'
+	'Metric - Millimeters':
+		'prefix':'Millimeters'
+		'body':'G21'
+	'Absolute Coordinates - Absolute Coordinates':
+		'prefix':'Absolute Coordinates'
+		'body':'G90'
+	'Absolute Coordinates - COORD REL':
+		'prefix':'COORD REL'
+		'body':'G90'
+	'Relative Coordinates - Relative Coordinates':
+		'prefix':'Relative Coordinates'
+		'body':'G91'
+	'Relative Coordinates - COORD ABS':
+		'prefix':'COORD ABS'
+		'body':'G91'
+	'Set Position':
+		'prefix':'Set Position'
+		'body':'G92'
+	#Limmits and Zero
+	'Machine Zero - Home Machine Zero':
+		'prefix':'Home Machine Zero'
+		'body':'G28'
+	'Machine Zero - Home':
+		'prefix':'Home'
+		'body':'G28'
+	'Machine Zero - Move to Origin':
+		'prefix':'Move to Origin'
+		'body':'G28'
+	'Detailed Z Probe':
+		'prefix':'Z Probe Detailed'
+		'body':'G29'
+	'Bed Level':
+		'prefix':'Bed Level'
+		'body':'G29'
+	'Single Z Probe':
+		'prefix':'Z Probe Single'
+		'body':'G30'
+	'Dock Z Probe Sled':
+		'prefix':'Z Probe sled dock'
+		'body':'G31'
+	'Unlock Z Probe Sled':
+		'prefix':'Z Probe sled undock'
+		'body':'G32'
+	'Delta Auto Calibration':
+		'prefix':'Calibration Auto Delta'
+		'body':'G33'
+	'Move to Grid Point':
+		'prefix':'Move to Grid Point'
+		'body':'G42'
+	#Probing
+	'Straight Probe (towards, stop on contact, signal error on failure)':
+		'prefix':'Straight Probe (towards, stop on contact, signal error on failure)'
+		'body':'G38.2'
+	'Straight Probe (towards, stop on contact)':
+		'prefix':'Straight Probe (towards, stop on contact)'
+		'body':'G38.3'
+	'Straight Probe (away, stop on loss of contact, signal error on failure)':
+		'prefix':'Straight Probe (away, stop on loss of contact, signal error on failure)'
+		'body':'G38.4'
+	'Straight Probe (away, stop on loss of contact)':
+		'prefix':'Straight Probe (away, stop on loss of contact)'
+		'body':'G38.5'
+		
+	#M codes
+	#Stop
+	'Stop':
+		'prefix':'Stop'
+		'body':'M0'
+	'Unconditional Stop':
+		'prefix':'Stop Unconditional'
+		'body':'M0'
+	'Sleep':
+		'prefix':'Sleep'
+		'body':'M1'
+	'Conditional Stop':
+		'prefix':'Stop Conditional'
+		'body':'M1'
+	#Stepper Motor Control
+	'Enable all Stepper Motors':
+		'prefix':'Stepper Motor Enable All'
+		'body':'M17'
+	'Disable all Stepper Motors':
+		'prefix':'Stepper Motor Disable All'
+		'body':'M18'
+	'Set Zxis Steps per Unit':
+		'prefix':'Stepper Motor Steps per unit'
+		'body':'M92 X$1 Y$2 Z$3 E$4\n;discarded on power off unless saved with M500 or config'
+	#IO
+	'Initialise SD Card':
+		'prefix':'SD Initialise'
+		'body':'M21'
+	'Release SD Card':
+		'prefix':'SD Release'
+		'body':'M22'
+	'Select SD File':
+		'prefix':'SD Select File'
+		'body':'M23 $1'
+	'Start SD print':
+		'prefix':'SD Start'
+		'bodt':'M24'
+	'Resume SD print':
+		'prefix':'SD Resume'
+		'bodt':'M24'
+	'Pause SD print':
+		'prefix':'SD Pause'
+		'bodt':'M25'
+	'Set SD Position':
+		'prefix':'SD Set Position'
+		'body':'M26 S$1 ;S File position in bytes'
+	'Report SD Print Status':
+		'prefix':'SD Report'
+		'body':'M27'
+	'Begin Write to SD Card':
+		'prefix':'SD Write Start'
+		'body':'M28 $1; filename'
+	'Stop Writing to SD Card':
+		'prefix':'SD Write Start'
+		'body':'M29 $1; filename'
+	'Delete File on SD Card':
+		'prefix':'SD Delete File'
+		'body':'M30'
+	
+	'Output time since last M109':
+		'prefix':'Time Since M109'
+		'body':'M31'
+	'Output time since last SD card Start':
+		'prefix':'SD time since last start'
+		'body':'M31'
+	'Select File and Start SD print':
+		'prefix':'SD Select File and Print'
+		'body':'M32 $1;filename'
+	'Get Long Name for SD Card File':
+		'prefix':'SD Long name'
+		'body':'M33'
+	'Set SD Sorting Options':
+		'prefix':'SD Sorting'
+		'body':'M34'
+	
+	'Switch IO Pin':
+		'prefix':'IO Pin Switch'
+		'body':'M42 P$1 S$2;Pin, Value'
+	'Pin Report and Debug':
+		'prefix':'IO Pin Report'
+		'body':"""
+		M43 E$1 P$2 W$3 I$4;
+		;E: Enable/Disable background endstop monitoring
+		;P: Pin to read or watch; if disabled, read or watch all pins
+		;W: Bool watch pins -reporting changes- until reset, click, or M108
+		;I: Bool Flag to ignore pin protection
+		"""
+	'ATX Power On':
+		'prefix':'Power ATX ON'
+		'body':'M80'
+	'ATX Power Status':
+		'prefix':'Power ATX Status'
+		'body':'M80 S'
+	'ATX Power Off':
+		'prefix':'Power ATX OFF'
+		'body':'M81'
+	#Probing
+	'Measure Z-Probe Repeatability':
+		'prefix':'Z Probe Repeatability'
+		'body':'M48'
+	#Extruder
+	'Set Extruder to Absolute':
+		'prefix':'Extruder Coordinates Absolute'
+		'body':'M82'
+	'Set Extruder to Relative':
+		'prefix':'Extruder Coordinates Relative'
+		'body':'M83'
+		
+	'Disable Idle Hold':
+		'prefix':'Idle Hold Disable'
+		'body':'M84'
+	'Set Inactivity Shutdown Timer':
+		'prefix':'Inactivity Shutdown Timer'
+		'body':'M85'
