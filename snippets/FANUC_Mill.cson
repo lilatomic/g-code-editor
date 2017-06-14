@@ -1,10 +1,10 @@
 'source.gcode':
 	## G codes
 	#Basic Commands
-	'Rapid  positioning':
+	'Rapid  positioning - Rapid':
 		'prefix':'Rapid'
 		'body':'G00'
-	'Rapid positioning 1':
+	'Rapid positioning - Move_rapid':
 		'prefix':'Move_rapid'
 		'body':'G00'
 	'Linear Interpolation':
@@ -160,13 +160,18 @@
 		'prefix':'Rotate Coordinate System Cancel'
 		'body':'G69'
 		
-	'Absolute Coordinates':
+	'Absolute Coordinates - Absolute Coordinates':
 		'prefix':'Absolute Coordinates'
 		'body':'G90'
-	'Relative Coordinates':
+	'Absolute Coordinates - COORD REL':
+		'prefix':'COORD REL'
+		'body':'G90'
+	'Relative Coordinates - Relative Coordinates':
 		'prefix':'Relative Coordinates'
 		'body':'G91'
-		
+	'Relative Coordinates - COORD ABS':
+		'prefix':'COORD ABS'
+		'body':'G91'
 		
 	'Exact stop check (modal)':
 		'prefix':'Exact stop check (modal)'
