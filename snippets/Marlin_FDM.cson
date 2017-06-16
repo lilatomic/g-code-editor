@@ -1,512 +1,533 @@
 'source.gcode':
-	## G codes
-	#Basic Commands
-	'Rapid  positioning - Rapid':
-		'prefix':'Rapid'
-		'body':'G00'
-	'Rapid positioning - Move_rapid':
-		'prefix':'Move_rapid'
-		'body':'G00'
-	'Linear Interpolation':
-		'prefix':'Move'
-		'body':'G01'
-	'Circular Interpolation (Clockwise)':
-		'prefix':'ARC CW'
-		'body':'G02'
-	'Circular Interpolation (Anticlockwise)':
-		'prefix':'ARC AW'
-		'body':'G03'
-	'Dwell':
-		'prefix':'Dwell'
-		'body':'G04'
-	'Retract':
-		'prefix':'Retract'
-		'body':'G10'
-	'Unretract':
-		'prefix':'Unretract'
-		'body':'G11'
-		
-	#Units
-	'Inch Units - USCS':
-		'prefix':'USCS Units'
-		'body':'G20'
-	'Inch Units - Imperial':
-		'prefix':'Imperial Units'
-		'body':'G20'
-	'Inch Units - Inches':
-		'prefix':'Inches'
-		'body':'G20'
-	'Metric - Metric':
-		'prefix':'Metric Units'
-		'body':'G21'
-	'Metric - Millimeters':
-		'prefix':'Millimeters'
-		'body':'G21'
-	'Absolute Coordinates - Absolute Coordinates':
-		'prefix':'Absolute Coordinates'
-		'body':'G90'
-	'Absolute Coordinates - COORD REL':
-		'prefix':'COORD REL'
-		'body':'G90'
-	'Relative Coordinates - Relative Coordinates':
-		'prefix':'Relative Coordinates'
-		'body':'G91'
-	'Relative Coordinates - COORD ABS':
-		'prefix':'COORD ABS'
-		'body':'G91'
-	'Set Position':
-		'prefix':'Set Position'
-		'body':'G92'
-		
-	#Limmits and Zero
-	'Machine Zero - Home Machine Zero':
-		'prefix':'Home Machine Zero'
-		'body':'G28'
-	'Machine Zero - Home':
-		'prefix':'Home'
-		'body':'G28'
-	'Machine Zero - Move to Origin':
-		'prefix':'Move to Origin'
-		'body':'G28'
-	'Detailed Z Probe':
-		'prefix':'Z Probe Detailed'
-		'body':'G29'
-	'Bed Level':
-		'prefix':'Bed Level'
-		'body':'G29'
-	'Single Z Probe':
-		'prefix':'Z Probe Single'
-		'body':'G30'
-	'Dock Z Probe Sled':
-		'prefix':'Z Probe sled dock'
-		'body':'G31'
-	'Unlock Z Probe Sled':
-		'prefix':'Z Probe sled undock'
-		'body':'G32'
-	'Delta Auto Calibration':
-		'prefix':'Calibration Auto Delta'
-		'body':'G33'
-	'Move to Grid Point':
-		'prefix':'Move to Grid Point'
-		'body':'G42'
-		
-	#Probing
-	'Straight Probe (towards, stop on contact, signal error on failure)':
-		'prefix':'Straight Probe (towards, stop on contact, signal error on failure)'
-		'body':'G38.2'
-	'Straight Probe (towards, stop on contact)':
-		'prefix':'Straight Probe (towards, stop on contact)'
-		'body':'G38.3'
-	'Straight Probe (away, stop on loss of contact, signal error on failure)':
-		'prefix':'Straight Probe (away, stop on loss of contact, signal error on failure)'
-		'body':'G38.4'
-	'Straight Probe (away, stop on loss of contact)':
-		'prefix':'Straight Probe (away, stop on loss of contact)'
-		'body':'G38.5'
-		
-	#M codes
-	#EEPROM
-	'Store Parameters in EEPROM':
-		'prefix':'EEPROM Parameters Store'
-		'body':'M500'
-	'Read Paramenters from EEPROM':
-		'prefix':'EEPROM Paramenters Read'
-		'body':'M501'
-	'Revert Parameters to Factory Defaults':
-		'prefix':'EEPROM Parameters Reset Factory Defaults'
-		'body':'M502'
-	'Get Print settings':
-		'prefix':'EEPROM Parameters Get'
-		'body':'M503'
-	#Stop
-	'Stop':
-		'prefix':'Stop'
-		'body':'M0'
-	'Unconditional Stop':
-		'prefix':'Stop Unconditional'
-		'body':'M0'
-	'Sleep':
-		'prefix':'Sleep'
-		'body':'M1'
-	'Conditional Stop':
-		'prefix':'Stop Conditional'
-		'body':'M1'
-	'Emergency stop':
-		'prefix':'Stop Emergency'
-		'body':'M112'
-	'Wait for Current Move to Finish':
-		'prefix':'Stop at End of Move'
-		'body':'M400'
-	'Stop SD Print on Endstop Contact':
-		'prefix':'Stop on Endstop'
-		'body':'M540 S$1 ;S(bool)'
-	'Restart After Being Stopped by Error':
-		'prefix':'Stop Restart after Error'
-		'body':'M999'
-		
-	#Motor Control
-	'Enable all Motors':
-		'prefix':'Motor Enable All'
-		'body':'M17'
-	'Disable all Motors':
-		'prefix':'Motor Disable All'
-		'body':'M18'
-	'Set Zxis Steps per Unit':
-		'prefix':'Motor Steps per unit'
-		'body':'M92 X$1 Y$2 Z$3 E$4\n;discarded on power off unless saved with M500 or config'
-	'Set Max Printing Acceleration':
-		'prefix':'Motor Acceleration Printing Set'
-		'body':'M201 X$1 Y$2 Z$3 E$4'
-	'Set Max Travel Acceleration':
-		'prefix':'Motor Acceleration Travel Set'
-		'body':'M202 X$1 Y$2 ;UNUSED IN MARLIN'
-	'Set Maximum Feedrate':
-		'prefix':'Motor Feedrate Maximum Set'
-		'body':'M203 X$1 Y$2 Z$3 E$4;maximum values, mm/sec in MARLIN'
-	'Set Default Acceleration':
-		'prefix':'Motor Acceleration Default Set'
-		'body':'M204 P$1 R$2 T$3; P: printing move, R: retract only, T: travel'
-	'Set Advanced Travel Settings':
-		'prefix':'Motor Speed Minimum Set'
-		'body':'M205 B$1 X$2 Z$3 E$4 ; B: minimum Segment Time, X: XY max jerk, Z: Z max jerk, E: E max jerk'
-	'Set Speed Factor Override Percentage':
-		'prefix':'Motor Speed Factor Override'
-		'body':'M220 S$1 ;S(Percentage): Override'
-	'Set Servo Position':
-		'prefix':'Motor Servo Position'
-		'body':'M280 P$1 S$2'
-	'Set Microstepping Mode All Drivers':
-		'prefix':'Motor Microstepping All Drivers Set'
-		'body':'M350 S$1 ; modes : 1=full step, 2=half step, ... , 256=1/256 step'
-	'Set Microstepping Mode':
-		'prefix':'Motor Microstepping Mode'
-		'body':'M350 X$2 Y$3 Z$4 E$5 B$6 ;E: for extruder 0, B: for extruder 1; modes : 1=full step, 2=half step, ... , 256=1/256 step'
-	'Linear Advance Scaling Factors':
-		'prefix':'Motor Linear Advance Scaling Factor Set'
-		'body':'M900 K$1 R$2 W$3 H$4 D$5;K: Advance K factor, R: Set Ratio Directly (overrides) WHD), WHD: Width height diameter'
-	'Control Digital Trimpot Directly':
-		'prefix':'Motor Digital Trimpot Control'
-		'body':'M908 P$1 S$2 ;P: Pin, S:Current'
-		
-	#IO
-	'Display Message':
-		'prefix':'Display Message'
-		'body':'M117'
-	'Set Display Colour':
-		'prefix':'Display Colour'
-		'body':'M150 R$1 U$2 B$3 ;RGB values'
-	'Automatically Send Temperature':
-		'prefix':'Send Temperature Automatically'
-		'body':'M155 S$1'
-	'Set Display Contrast':
-		'prefix':'Display Contrast'
-		'body':'M250 C$1 ; C(0..64): Contrast'
-	'Play Beep Sound':
-		'prefix':'Beep Play'
-		'body':'M300 S$1 P$2 ; S(Hz): Frequency, P(milliseconds): duration'
-	'Case Lights':
-		'prefix':'Lights Case'
-		'body':'M355 S$! ;S(bool)'
-		
-	##SD card
-	'Initialise SD Card':
-		'prefix':'SD Initialise'
-		'body':'M21'
-	'Release SD Card':
-		'prefix':'SD Release'
-		'body':'M22'
-	'Select SD File':
-		'prefix':'SD Select File'
-		'body':'M23 $1'
-	'Start SD print':
-		'prefix':'SD Start'
-		'bodt':'M24'
-	'Resume SD print':
-		'prefix':'SD Resume'
-		'bodt':'M24'
-	'Pause SD print':
-		'prefix':'SD Pause'
-		'bodt':'M25'
-	'Set SD Position':
-		'prefix':'SD Set Position'
-		'body':'M26 S$1 ;S File position in bytes'
-	'Report SD Print Status':
-		'prefix':'SD Report'
-		'body':'M27'
-	'Begin Write to SD Card':
-		'prefix':'SD Write Start'
-		'body':'M28 $1; filename'
-	'Stop Writing to SD Card':
-		'prefix':'SD Write Start'
-		'body':'M29 $1; filename'
-	'Delete File on SD Card':
-		'prefix':'SD Delete File'
-		'body':'M30'
-	'Start SD Logging':
-		'prefix':'SD Logging Start'
-		'body':'M928 $1 ;Filename '
-	
-	'Output time since last M109':
-		'prefix':'Time Since M109'
-		'body':'M31'
-	'Output time since last SD card Start':
-		'prefix':'SD time since last start'
-		'body':'M31'
-	'Select File and Start SD print':
-		'prefix':'SD Select File and Print'
-		'body':'M32 $1;filename'
-	'Get Long Name for SD Card File':
-		'prefix':'SD Long name'
-		'body':'M33'
-	'Set SD Sorting Options':
-		'prefix':'SD Sorting'
-		'body':'M34'
-	##Pins
-	'Switch IO Pin':
-		'prefix':'IO Pin Switch'
-		'body':'M42 P$1 S$2;Pin, Value'
-	'Pin Report and Debug':
-		'prefix':'IO Pin Report'
-		'body':"""
-		M43 E$1 P$2 W$3 I$4;
-		;E: Enable/Disable background endstop monitoring
-		;P: Pin to read or watch; if disabled, read or watch all pins
-		;W: Bool watch pins -reporting changes- until reset, click, or M108
-		;I: Bool Flag to ignore pin protection
-		"""
-	'Wait For Pin State':
-		'prefix':'IO Pin Wait For State'
-		'body':'M226 S$1 ;S: Pin State'
-	'Wait for Pin State - Attach Trigger':
-		'prefix':'IO Pin Trigger Attach'
-		'body':'M226 S$1 ;S: Pin State'
-	'Trigger Camera':
-		'prefix':'IO Pin Trigger Camera'
-		'body':'M240'
-	'Toggle MS1 MS2 Pins Directly':
-		'prefix':'IO Pin MS1/2 Toggle'
-		'body':'M351'
-	##I2C
-	'I2C Set Send Address':
-		'prefix':'I2C Send Address'
-		'body':'M260 A$1'
-	'I2C Bufffer Data':
-		'prefix':'I2C Send Buffer'
-		'body':'M260 B$1 ; B(char)'
-	'I2C Send Data':
-		'prefix':'I2C Send'
-		'body':'M260 S1'
-	'I2C Set Request Address':
-		'prefix':'I2C Request Address'
-		'body':'M261 A$1'
-	'I2C Request Size':
-		'prefix':'I2C Request Size'
-		'body':'M261 B$1'
-	'I2C Request Data':
-		'prefix':'I2C Request'
-		'body':'M261 A$1 B$2'
-	##Power
-	'ATX Power On':
-		'prefix':'Power ATX ON'
-		'body':'M80'
-	'ATX Power Status':
-		'prefix':'Power ATX Status'
-		'body':'M80 S'
-	'ATX Power Off':
-		'prefix':'Power ATX OFF'
-		'body':'M81'
-		
-	#Probing
-	'Measure Z-Probe Repeatability':
-		'prefix':'Z Probe Repeatability'
-		'body':'M48'
-	'Lower Z Probe':
-		'prefix':'Z Probe Lower'
-		'body':'M401'
-	'Raise Z Probe':
-		'prefix':'Z Probe Raise'
-		'body':'M402'
-	'Set Z-probe Offest':
-		'prefix':'Z Probe Offset Set'
-		'body':'M851 Z$1'
-		
-	#Extruder
-	##Retract
-	'Set Retract Length':
-		'prefix':'Extruder Retract Length Set'
-		'body':'M207 S$1 F$2 Z$3 ; S: amount to retract, F: feedrate, Z: additional Z lift'
-	'Set Unretract Length':
-		'prefix':'Extruder Unretract Length Set'
-		'body':'M207 S$1 F$2 ; S: amount to unretract, F: feedrate'
-	'Enable Automatic Retract':
-		'prefix':'Extruder Retract Enable Automatic'
-		'body':'M209 S$1 ; S(bool):'
-	
-	##Coordinates
-	'Set Extruder to Absolute':
-		'prefix':'Extruder Coordinates Absolute'
-		'body':'M82'
-	'Set Extruder to Relative':
-		'prefix':'Extruder Coordinates Relative'
-		'body':'M83'
-	'Set Hotend Offset':
-		'prefix':'Extruder Coordinates Offset'
-		'body':'M218 T$1 X$2 Y$3'
-	'Set Extrude Factor Override Percentage':
-		'prefix':'Extruder Extrude Factor Override'
-		'body':'M221 S$1 ;S(Percentage): Override'
-	'Set Dual X-Carriage Movement mode':
-		'prefix':'Configuration Dual X-Carriage'
-		'body':'M605 S$1 X$2 R$3 ; S?: Set mode to auto park, X?: duplication offset, R?: duplication temperature offset'
-	'Set Delta Configuration':
-		'prefix':'Configuration Delta'
-		'body':'M665 L$1 R$2 S$3 B$4 H$5 X$6 Y$7 Z$8 ;L?: diagonal rod length, R?: delta radius, S?: Segments per second\n;B?: Safe probing radius, H?: Delta height, X?Y?Z?: Tower Position Correction'
-	'Set Delta Endstop Adjustment':
-		'prefix':'Configuration Delta Endstop Correction Set'
-		'body':'M666 X$1 Y$2 Z$3 A$4 B$5 ;X?Y?Z?: Axis Endstop Adjustments, A?B?: angle adjustments'
-		
-	##Idle
-	'Disable Idle Hold':
-		'prefix':'Idle Hold Disable'
-		'body':'M84'
-	'Set Inactivity Shutdown Timer':
-		'prefix':'Inactivity Shutdown Timer'
-		'body':'M85'
-		
-	##Extruder Temperature
-	'Set Extruder Temperature':
-		'prefix':'Extruder Temperature Set'
-		'body':'M104 S$1'
-	'Set Extruder Temperature and Wait':
-		'prefix':'Extruder Temperature Set and Wait'
-		'body':'M109 S$1'
-	'Get Extruder Temperature':
-		'prefix':'Extruder Temperature Get'
-		'body':'M105'
-	'Cancel Heating':
-		'prefix':'Extruder Temperature Cancel'
-		'body':'M108'
-	'Open Valve':
-		'prefix':'Valve Open'
-		'body':'M126 P$1;milliseconds to wait to open'
-	'Close Valve':
-		'prefix':'Valve Close'
-		'body':'M127 P$1;milliseconds to wait to close'
-	'Activate Solenoid':
-		'prefix':'Solenoid Activate'
-		'body':'M380'
-	'Deactivate All Solenoids':
-		'prefix':'Solenoid Deactivate'
-		'body':'M381'
-	'Extruder Pressure PWM':
-		'prefix':'Extruder Pressure PWM'
-		'body':'M128 S$1'
-	'Extruder Pressure Off':
-		'prefix':'Extruder Pressure Off'
-		'body':'M128 P$1;milliseconds to wait to close'
-	'Set Extruder PID Parameters':
-		'prefix':'Extruder PID Parameters Set'
-		'body':'M301 H$1 P$2 I$3 D$4 ;H:heater number, P: proportional constant, I: integral constant, D: derivative constant'
-	'Tune PID':
-		'prefix':'Extruder PID Parameters Tune'
-		'body':'M303 S$1 C$2 ;S:temperature, C: cycles ; Use U1 to apply to settings'
-	'Allow Cold Extrudes':
-		'prefix':'Extruder Temperature Minimum'
-		'body':'M302 S$1'
+  ## G codes
+  #Basic Commands
+  'Rapid  positioning - Rapid':
+    'prefix':'Rapid'
+    'body':'G00'
+  'Rapid positioning - Move_rapid':
+    'prefix':'Move_rapid'
+    'body':'G00'
+  'Linear Interpolation':
+    'prefix':'Move'
+    'body':'G01'
+  'Circular Interpolation (Clockwise)':
+    'prefix':'ARC CW'
+    'body':'G02'
+  'Circular Interpolation (Anticlockwise)':
+    'prefix':'ARC AW'
+    'body':'G03'
+  'Dwell':
+    'prefix':'Dwell'
+    'body':'G04'
+  'Retract':
+    'prefix':'Retract'
+    'body':'G10'
+  'Unretract':
+    'prefix':'Unretract'
+    'body':'G11'
+    
+  #Units
+  'Inch Units - USCS':
+    'prefix':'USCS Units'
+    'body':'G20'
+  'Inch Units - Imperial':
+    'prefix':'Imperial Units'
+    'body':'G20'
+  'Inch Units - Inches':
+    'prefix':'Inches'
+    'body':'G20'
+  'Metric - Metric':
+    'prefix':'Metric Units'
+    'body':'G21'
+  'Metric - Millimeters':
+    'prefix':'Millimeters'
+    'body':'G21'
+  'Absolute Coordinates - Absolute Coordinates':
+    'prefix':'Absolute Coordinates'
+    'body':'G90'
+  'Absolute Coordinates - COORD REL':
+    'prefix':'COORD REL'
+    'body':'G90'
+  'Relative Coordinates - Relative Coordinates':
+    'prefix':'Relative Coordinates'
+    'body':'G91'
+  'Relative Coordinates - COORD ABS':
+    'prefix':'COORD ABS'
+    'body':'G91'
+  'Set Position':
+    'prefix':'Set Position'
+    'body':'G92'
+    
+  #Limmits and Zero
+  'Machine Zero - Home Machine Zero':
+    'prefix':'Home Machine Zero'
+    'body':'G28'
+  'Machine Zero - Home':
+    'prefix':'Home'
+    'body':'G28'
+  'Machine Zero - Move to Origin':
+    'prefix':'Move to Origin'
+    'body':'G28'
+  'Detailed Z Probe':
+    'prefix':'Z Probe Detailed'
+    'body':'G29'
+  'Bed Level':
+    'prefix':'Bed Level'
+    'body':'G29'
+  'Single Z Probe':
+    'prefix':'Z Probe Single'
+    'body':'G30'
+  'Dock Z Probe Sled':
+    'prefix':'Z Probe sled dock'
+    'body':'G31'
+  'Unlock Z Probe Sled':
+    'prefix':'Z Probe sled undock'
+    'body':'G32'
+  'Delta Auto Calibration':
+    'prefix':'Calibration Auto Delta'
+    'body':'G33'
+  'Move to Grid Point':
+    'prefix':'Move to Grid Point'
+    'body':'G42'
+    
+  #Probing
+  'Straight Probe (towards, stop on contact, signal error on failure)':
+    'prefix':'Straight Probe (towards, stop on contact, error on failure)'
+    'body':'G38.2'
+  'Straight Probe (towards, stop on contact)':
+    'prefix':'Straight Probe (towards, stop on contact)'
+    'body':'G38.3'
+  'Straight Probe (away, stop on loss of contact, signal error on failure)':
+    'prefix':'Straight Probe (away, stop on loss of contact, error on failure)'
+    'body':'G38.4'
+  'Straight Probe (away, stop on loss of contact)':
+    'prefix':'Straight Probe (away, stop on loss of contact)'
+    'body':'G38.5'
+    
+  #M codes
+  #EEPROM
+  'Store Parameters in EEPROM':
+    'prefix':'EEPROM Parameters Store'
+    'body':'M500'
+  'Read Paramenters from EEPROM':
+    'prefix':'EEPROM Paramenters Read'
+    'body':'M501'
+  'Revert Parameters to Factory Defaults':
+    'prefix':'EEPROM Parameters Reset Factory Defaults'
+    'body':'M502'
+  'Get Print settings':
+    'prefix':'EEPROM Parameters Get'
+    'body':'M503'
+  #Stop
+  'Stop':
+    'prefix':'Stop'
+    'body':'M0'
+  'Unconditional Stop':
+    'prefix':'Stop Unconditional'
+    'body':'M0'
+  'Sleep':
+    'prefix':'Sleep'
+    'body':'M1'
+  'Conditional Stop':
+    'prefix':'Stop Conditional'
+    'body':'M1'
+  'Emergency stop':
+    'prefix':'Stop Emergency'
+    'body':'M112'
+  'Wait for Current Move to Finish':
+    'prefix':'Stop at End of Move'
+    'body':'M400'
+  'Stop SD Print on Endstop Contact':
+    'prefix':'Stop on Endstop'
+    'body':'M540 S$1 ;S(bool)'
+  'Restart After Being Stopped by Error':
+    'prefix':'Stop Restart after Error'
+    'body':'M999'
+    
+  #Motor Control
+  'Enable all Motors':
+    'prefix':'Motor Enable All'
+    'body':'M17'
+  'Disable all Motors':
+    'prefix':'Motor Disable All'
+    'body':'M18'
+  'Set Zxis Steps per Unit':
+    'prefix':'Motor Steps per unit'
+    'body':'M92 X$1 Y$2 Z$3 E$4\n
+    discarded on power off unless saved with M500 or config'
+  'Set Max Printing Acceleration':
+    'prefix':'Motor Acceleration Printing Set'
+    'body':'M201 X$1 Y$2 Z$3 E$4'
+  'Set Max Travel Acceleration':
+    'prefix':'Motor Acceleration Travel Set'
+    'body':'M202 X$1 Y$2 ;UNUSED IN MARLIN'
+  'Set Maximum Feedrate':
+    'prefix':'Motor Feedrate Maximum Set'
+    'body':'M203 X$1 Y$2 Z$3 E$4;maximum values, mm/sec in MARLIN'
+  'Set Default Acceleration':
+    'prefix':'Motor Acceleration Default Set'
+    'body':'M204 P$1 R$2 T$3; P: printing move, R: retract only, T: travel'
+  'Set Advanced Travel Settings':
+    'prefix':'Motor Speed Minimum Set'
+    'body':'M205 B$1 X$2 Z$3 E$4
+    ; B: minimum Segment Time, X: XY max jerk, Z: Z max jerk, E: E max jerk'
+  'Set Speed Factor Override Percentage':
+    'prefix':'Motor Speed Factor Override'
+    'body':'M220 S$1 ;S(Percentage): Override'
+  'Set Servo Position':
+    'prefix':'Motor Servo Position'
+    'body':'M280 P$1 S$2'
+  'Set Microstepping Mode All Drivers':
+    'prefix':'Motor Microstepping All Drivers Set'
+    'body':'M350 S$1 ; modes : 1=full step, 2=half step, ... , 256=1/256 step'
+  'Set Microstepping Mode':
+    'prefix':'Motor Microstepping Mode'
+    'body':'M350 X$2 Y$3 Z$4 E$5 B$6
+    ;E: for extruder 0, B: for extruder 1
+    ; modes : 1=full step, 2=half step, ... , 256=1/256 step'
+  'Linear Advance Scaling Factors':
+    'prefix':'Motor Linear Advance Scaling Factor Set'
+    'body':'M900 K$1 R$2 W$3 H$4 D$5
+    ;K: Advance K factor, R: Set Ratio Directly (overrides) WHD),
+    ;WHD: Width height diameter'
+  'Control Digital Trimpot Directly':
+    'prefix':'Motor Digital Trimpot Control'
+    'body':'M908 P$1 S$2 ;P: Pin, S:Current'
+    
+  #IO
+  'Display Message':
+    'prefix':'Display Message'
+    'body':'M117'
+  'Set Display Colour':
+    'prefix':'Display Colour'
+    'body':'M150 R$1 U$2 B$3 ;RGB values'
+  'Automatically Send Temperature':
+    'prefix':'Send Temperature Automatically'
+    'body':'M155 S$1'
+  'Set Display Contrast':
+    'prefix':'Display Contrast'
+    'body':'M250 C$1 ; C(0..64): Contrast'
+  'Play Beep Sound':
+    'prefix':'Beep Play'
+    'body':'M300 S$1 P$2 ; S(Hz): Frequency, P(milliseconds): duration'
+  'Case Lights':
+    'prefix':'Lights Case'
+    'body':'M355 S$! ;S(bool)'
+    
+  ##SD card
+  'Initialise SD Card':
+    'prefix':'SD Initialise'
+    'body':'M21'
+  'Release SD Card':
+    'prefix':'SD Release'
+    'body':'M22'
+  'Select SD File':
+    'prefix':'SD Select File'
+    'body':'M23 $1'
+  'Start SD print':
+    'prefix':'SD Start'
+    'bodt':'M24'
+  'Resume SD print':
+    'prefix':'SD Resume'
+    'bodt':'M24'
+  'Pause SD print':
+    'prefix':'SD Pause'
+    'bodt':'M25'
+  'Set SD Position':
+    'prefix':'SD Set Position'
+    'body':'M26 S$1 ;S File position in bytes'
+  'Report SD Print Status':
+    'prefix':'SD Report'
+    'body':'M27'
+  'Begin Write to SD Card':
+    'prefix':'SD Write Start'
+    'body':'M28 $1; filename'
+  'Stop Writing to SD Card':
+    'prefix':'SD Write Start'
+    'body':'M29 $1; filename'
+  'Delete File on SD Card':
+    'prefix':'SD Delete File'
+    'body':'M30'
+  'Start SD Logging':
+    'prefix':'SD Logging Start'
+    'body':'M928 $1 ;Filename '
+  
+  'Output time since last M109':
+    'prefix':'Time Since M109'
+    'body':'M31'
+  'Output time since last SD card Start':
+    'prefix':'SD time since last start'
+    'body':'M31'
+  'Select File and Start SD print':
+    'prefix':'SD Select File and Print'
+    'body':'M32 $1;filename'
+  'Get Long Name for SD Card File':
+    'prefix':'SD Long name'
+    'body':'M33'
+  'Set SD Sorting Options':
+    'prefix':'SD Sorting'
+    'body':'M34'
+  ##Pins
+  'Switch IO Pin':
+    'prefix':'IO Pin Switch'
+    'body':'M42 P$1 S$2;Pin, Value'
+  'Pin Report and Debug':
+    'prefix':'IO Pin Report'
+    'body':"""
+    M43 E$1 P$2 W$3 I$4;
+    ;E: Enable/Disable background endstop monitoring
+    ;P: Pin to read or watch; if disabled, read or watch all pins
+    ;W: Bool watch pins -reporting changes- until reset, click, or M108
+    ;I: Bool Flag to ignore pin protection
+    """
+  'Wait For Pin State':
+    'prefix':'IO Pin Wait For State'
+    'body':'M226 S$1 ;S: Pin State'
+  'Wait for Pin State - Attach Trigger':
+    'prefix':'IO Pin Trigger Attach'
+    'body':'M226 S$1 ;S: Pin State'
+  'Trigger Camera':
+    'prefix':'IO Pin Trigger Camera'
+    'body':'M240'
+  'Toggle MS1 MS2 Pins Directly':
+    'prefix':'IO Pin MS1/2 Toggle'
+    'body':'M351'
+  ##I2C
+  'I2C Set Send Address':
+    'prefix':'I2C Send Address'
+    'body':'M260 A$1'
+  'I2C Bufffer Data':
+    'prefix':'I2C Send Buffer'
+    'body':'M260 B$1 ; B(char)'
+  'I2C Send Data':
+    'prefix':'I2C Send'
+    'body':'M260 S1'
+  'I2C Set Request Address':
+    'prefix':'I2C Request Address'
+    'body':'M261 A$1'
+  'I2C Request Size':
+    'prefix':'I2C Request Size'
+    'body':'M261 B$1'
+  'I2C Request Data':
+    'prefix':'I2C Request'
+    'body':'M261 A$1 B$2'
+  ##Power
+  'ATX Power On':
+    'prefix':'Power ATX ON'
+    'body':'M80'
+  'ATX Power Status':
+    'prefix':'Power ATX Status'
+    'body':'M80 S'
+  'ATX Power Off':
+    'prefix':'Power ATX OFF'
+    'body':'M81'
+    
+  #Probing
+  'Measure Z-Probe Repeatability':
+    'prefix':'Z Probe Repeatability'
+    'body':'M48'
+  'Lower Z Probe':
+    'prefix':'Z Probe Lower'
+    'body':'M401'
+  'Raise Z Probe':
+    'prefix':'Z Probe Raise'
+    'body':'M402'
+  'Set Z-probe Offest':
+    'prefix':'Z Probe Offset Set'
+    'body':'M851 Z$1'
+    
+  #Extruder
+  ##Retract
+  'Set Retract Length':
+    'prefix':'Extruder Retract Length Set'
+    'body':'M207 S$1 F$2 Z$3;S:retract amount, F:feedrate, Z:additional Z lift'
+  'Set Unretract Length':
+    'prefix':'Extruder Unretract Length Set'
+    'body':'M207 S$1 F$2 ; S: amount to unretract, F: feedrate'
+  'Enable Automatic Retract':
+    'prefix':'Extruder Retract Enable Automatic'
+    'body':'M209 S$1 ; S(bool):'
+  
+  ##Coordinates
+  'Set Extruder to Absolute':
+    'prefix':'Extruder Coordinates Absolute'
+    'body':'M82'
+  'Set Extruder to Relative':
+    'prefix':'Extruder Coordinates Relative'
+    'body':'M83'
+  'Set Hotend Offset':
+    'prefix':'Extruder Coordinates Offset'
+    'body':'M218 T$1 X$2 Y$3'
+  'Set Extrude Factor Override Percentage':
+    'prefix':'Extruder Extrude Factor Override'
+    'body':'M221 S$1 ;S(Percentage): Override'
+  'Set Dual X-Carriage Movement mode':
+    'prefix':'Configuration Dual X-Carriage'
+    'body':'M605 S$1 X$2 R$3
+    ;S?: Set mode to auto park, X?: offset, R?: temperature offset'
+  'Set Delta Configuration':
+    'prefix':'Configuration Delta'
+    'body':'M665 L$1 R$2 S$3 B$4 H$5 X$6 Y$7 Z$8
+    ;L?: diagonal rod length, R?: delta radius, S?: Segments per second
+    ;B?: Safe probing radius, H?: Delta height, X?Y?Z?: Tower Position offset'
+  'Set Delta Endstop Adjustment':
+    'prefix':'Configuration Delta Endstop Correction Set'
+    'body':'M666 X$1 Y$2 Z$3 A$4 B$5
+    ;X?Y?Z?: Axis Endstop Adjustments, A?B?: angle adjustments'
+    
+  ##Idle
+  'Disable Idle Hold':
+    'prefix':'Idle Hold Disable'
+    'body':'M84'
+  'Set Inactivity Shutdown Timer':
+    'prefix':'Inactivity Shutdown Timer'
+    'body':'M85'
+    
+  ##Extruder Temperature
+  'Set Extruder Temperature':
+    'prefix':'Extruder Temperature Set'
+    'body':'M104 S$1'
+  'Set Extruder Temperature and Wait':
+    'prefix':'Extruder Temperature Set and Wait'
+    'body':'M109 S$1'
+  'Get Extruder Temperature':
+    'prefix':'Extruder Temperature Get'
+    'body':'M105'
+  'Cancel Heating':
+    'prefix':'Extruder Temperature Cancel'
+    'body':'M108'
+  'Open Valve':
+    'prefix':'Valve Open'
+    'body':'M126 P$1;milliseconds to wait to open'
+  'Close Valve':
+    'prefix':'Valve Close'
+    'body':'M127 P$1;milliseconds to wait to close'
+  'Activate Solenoid':
+    'prefix':'Solenoid Activate'
+    'body':'M380'
+  'Deactivate All Solenoids':
+    'prefix':'Solenoid Deactivate'
+    'body':'M381'
+  'Extruder Pressure PWM':
+    'prefix':'Extruder Pressure PWM'
+    'body':'M128 S$1'
+  'Extruder Pressure Off':
+    'prefix':'Extruder Pressure Off'
+    'body':'M128 P$1;milliseconds to wait to close'
+  'Set Extruder PID Parameters':
+    'prefix':'Extruder PID Parameters Set'
+    'body':'M301 H$1 P$2 I$3 D$4
+    ;H:heater number
+    ;Constants: P: proportional, I: integral, D: derivative'
+  'Tune PID':
+    'prefix':'Extruder PID Parameters Tune'
+    'body':'M303 S$1 C$2
+    ;S:temperature, C: cycles ; Use U1 to apply to settings'
+  'Allow Cold Extrudes':
+    'prefix':'Extruder Temperature Minimum'
+    'body':'M302 S$1'
 
-	##Fans
-	'Fan On':
-		'prefix':'Fan On'
-		'body':'M106 S$1'
-	'Fan Off':
-		'prefix':'Fan Off'
-		'body':'M107'
-	
-	##Bed
-	'Set Bed Temperature':
-		'prefix':'Bed Temperature Set'
-		'body':'M140 S$1'
-	'Set Bed Temperature and Wait':
-		'prefix':'Bed Temperature Set and Wait'
-		'body':'M190 S$1'
-	'Set Bed Level Sensor Offset':
-		'prefix':'Bed Level Offset Set'
-		'body':'M212 Z$1 ;Might not be available'
-	'Set Bed PID Parameters':
-		'prefix':'Extruder PID Parameters Set'
-		'body':'M301 H$1 P$2 I$3 D$4 ;H:heater number, P: proportional constant, I: integral constant, D: derivative constant'
-	'Set Bed Leveling Mode':
-		'prefix':'Bed Level Mode Set'
-		'body':'M420 S$1 Z$2 ; S(bool): enable based on current mesh, Z: gradually reduce until this height'
-	'Set Bed Leveling Mesh Z Coordinate - ABS':
-		'prefix':'Bed Leveling Coordinate Set ABS'
-		'body':'M421 I$1 J$2 Z$3 ; I,J(index): index on axis, Z: absolute z value of mesh point'
-	'Set Bed Leveling Mesh Z Coordinate - REL':
-		'prefix':'Bed Leveling Coordinate Set REL'
-		'body':'M421 I$1 J$2 Q$3 ; I,J(index): index on axis, Q: relative z value of mesh point'
+  ##Fans
+  'Fan On':
+    'prefix':'Fan On'
+    'body':'M106 S$1'
+  'Fan Off':
+    'prefix':'Fan Off'
+    'body':'M107'
+  
+  ##Bed
+  'Set Bed Temperature':
+    'prefix':'Bed Temperature Set'
+    'body':'M140 S$1'
+  'Set Bed Temperature and Wait':
+    'prefix':'Bed Temperature Set and Wait'
+    'body':'M190 S$1'
+  'Set Bed Level Sensor Offset':
+    'prefix':'Bed Level Offset Set'
+    'body':'M212 Z$1 ;Might not be available'
+  'Set Bed PID Parameters':
+    'prefix':'Extruder PID Parameters Set'
+    'body':'M301 H$1 P$2 I$3 D$4
+    ;H:heater number
+    ;Constants: P: proportional, I: integral, D: derivative'
+  'Set Bed Leveling Mode':
+    'prefix':'Bed Level Mode Set'
+    'body':'M420 S$1 Z$2
+    ;S(bool): enable based on current mesh, Z: gradually reduce until height'
+  'Set Bed Leveling Mesh Z Coordinate - ABS':
+    'prefix':'Bed Leveling Coordinate Set ABS'
+    'body':'M421 I$1 J$2 Z$3
+    ; I,J(index): index on axis, Z: absolute z value of mesh point'
+  'Set Bed Leveling Mesh Z Coordinate - REL':
+    'prefix':'Bed Leveling Coordinate Set REL'
+    'body':'M421 I$1 J$2 Q$3
+    ; I,J(index): index on axis, Q: relative z value of mesh point'
 
 
-	#DEBUG
-	'Set Current Line Number':
-		'prefix':'Line Number Set'
-		'body':'M110 N$1'
-	'Set Debug Level':
-		'prefix':'Debug Level Set'
-		'body':'M111 S$1'
-	'Get Firmware Version and Capability':
-		'prefix':'Firmware Version Get'
-		'body':'M115;May not work'
-	'Report Firmware Configuration':
-		'prefix':'Firmware Configuration Get'
-		'body':'M360'
-	##Multimaterial
-	'Set Weight of Mixed Material':
-		'prefix':'Weight Mixed Material Set'
-		'body':'M163 S$1 P$2 ;S: Extruder Number, P: Weight'
-	'Store Weight':
-		'prefix':'Weight Mixed Material Store'
-		'body':'M164 S$1 P$2 ;S: Virtual Extruder Number, P(bool): Store in EEPROM'
-	'Set Multiple Mix Weights':
-		'prefix':'Weight Multiple Set'
-		'body':'M165 A$1 B$2 C$3 D$4 H$5 I$6 ;Params: mix factor for extruder stepper\n;factors must some to 1'
-	'':
-		'prefix':''
-		'body':''
-	
-	#Filament
-	'Set Filament Diameter - M200':
-		'prefix':'Filament Diameter Set'
-		'body':'M200 D$1'
-	'Set Nozzle Diameter ':
-		'prefix':'Nozzle Diameter Set'
-		'body':'M404 N$1'
-	'Enablble Filament Sensor':
-		'prefix':'Filament Sensor On'
-		'body':'M405'
-	'Disable Filament Sensor':
-		'prefix':'Filament Sensor Offset'
-		'body':'M406'
-	'Display Filament Diameter':
-		'prefix':'Filament Diameter Get'
-		'body':'M407'
-	'Filament Change Pause':
-		'prefix':'Filament Change Pause'
-		'body':'M600 X$1 Y$2 Z$3 E$4 L$5 ; X?: X position, Y?: Y position, Z?: relative lift, E?: initial retract distance, L?: later retract distance'
-		
-	#Coordinates
-	'Get Current Position':
-		'prefix':'Position Get'
-		'body':'M114'
-	'Get Endstop Status':
-		'prefix':'Endstop Status Get'
-		'body':'M119'
-	'Enable Endstop Detection':
-		'prefix':'Endstop Detection Enable'
-		'body':'M120'
-	'Disable Endstop Detection':
-		'prefix':'Endstop Detection Disable'
-		'body':'M121'
-	'Offset Axes':
-		'prefix':'Position Offset'
-		'body':'M206 X$1 Y$2 Z$3 ;Can be saved to EEPROM with M500'
-	
+  #DEBUG
+  'Set Current Line Number':
+    'prefix':'Line Number Set'
+    'body':'M110 N$1'
+  'Set Debug Level':
+    'prefix':'Debug Level Set'
+    'body':'M111 S$1'
+  'Get Firmware Version and Capability':
+    'prefix':'Firmware Version Get'
+    'body':'M115;May not work'
+  'Report Firmware Configuration':
+    'prefix':'Firmware Configuration Get'
+    'body':'M360'
+  ##Multimaterial
+  'Set Weight of Mixed Material':
+    'prefix':'Weight Mixed Material Set'
+    'body':'M163 S$1 P$2 ;S: Extruder Number, P: Weight'
+  'Store Weight':
+    'prefix':'Weight Mixed Material Store'
+    'body':'M164 S$1 P$2 ;S: Virtual Extruder Number, P(bool): Store in EEPROM'
+  'Set Multiple Mix Weights':
+    'prefix':'Weight Multiple Set'
+    'body':'M165 A$1 B$2 C$3 D$4 H$5 I$6
+    ;Params: mix factor for extruder stepper\n;factors must some to 1'
+  '':
+    'prefix':''
+    'body':''
+  
+  #Filament
+  'Set Filament Diameter - M200':
+    'prefix':'Filament Diameter Set'
+    'body':'M200 D$1'
+  'Set Nozzle Diameter ':
+    'prefix':'Nozzle Diameter Set'
+    'body':'M404 N$1'
+  'Enablble Filament Sensor':
+    'prefix':'Filament Sensor On'
+    'body':'M405'
+  'Disable Filament Sensor':
+    'prefix':'Filament Sensor Offset'
+    'body':'M406'
+  'Display Filament Diameter':
+    'prefix':'Filament Diameter Get'
+    'body':'M407'
+  'Filament Change Pause':
+    'prefix':'Filament Change Pause'
+    'body':'M600 X$1 Y$2 Z$3 E$4 L$5
+    ; X?Y?: position, Z?: relative lift,
+    ;E?: initial retract distance, L?: later retract distance'
+    
+  #Coordinates
+  'Get Current Position':
+    'prefix':'Position Get'
+    'body':'M114'
+  'Get Endstop Status':
+    'prefix':'Endstop Status Get'
+    'body':'M119'
+  'Enable Endstop Detection':
+    'prefix':'Endstop Detection Enable'
+    'body':'M120'
+  'Disable Endstop Detection':
+    'prefix':'Endstop Detection Disable'
+    'body':'M121'
+  'Offset Axes':
+    'prefix':'Position Offset'
+    'body':'M206 X$1 Y$2 Z$3 ;Can be saved to EEPROM with M500'
+  

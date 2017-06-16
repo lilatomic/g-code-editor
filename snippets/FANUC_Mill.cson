@@ -1,259 +1,259 @@
 'source.gcode':
-	## G codes
-	#Basic Commands
-	'Rapid  positioning - Rapid':
-		'prefix':'Rapid'
-		'body':'G00'
-	'Rapid positioning - Move_rapid':
-		'prefix':'Move_rapid'
-		'body':'G00'
-	'Linear Interpolation':
-		'prefix':'Move'
-		'body':'G01'
-	'Circular Interpolation (Clockwise)':
-		'prefix':'ARC CW'
-		'body':'G02'
-	'Circular Interpolation (Anticlockwise)':
-		'prefix':'ARC AW'
-		'body':'G03'
-	'Dwell':
-		'prefix':'Dwell'
-		'body':'G04'
-	'High Precision Contour Control':
-		'prefix':'HPCC'
-		'body':'G05 P10000'
-	'AI Advanced Preview Control':
-		'prefix':'AI Advanced Preview Control'
-		'body':'G05.1 Q1'
-	'NURBS Machining':
-		'prefix':'NURBS Machining'
-		'body':'G06.1'
-	'Imaginary axis designation':
-		'prefix':'Imaginary axis designation'
-		'body':'G07'
-	'Exact stop check (non modal)':
-		'prefix':'Exact stop check (non modal)'
-		'body':'G09'
-	'Programmable data input':
-		'prefix':'Programmable data input'
-		'body':'G10'
-	'Data write cancel':
-		'prefix':'Data write cancel'
-		'body':'G11'
-	'Full Circle Interpolation (Clockwise)':
-		'prefix':'Circle CW'
-		'body':'G12'
-	'Full Circle Interpolation (Anticlockwise)':
-		'prefix':'Circle AW'
-		'body':'G13'
-	'XY Plane Selection':
-		'prefix':'Plane XY Selection'
-		'body':'G17'
-	'ZX Plane Selection':
-		'prefix':'Plane ZX Selection'
-		'body':'G18'
-	'YZ Plane Selection':
-		'prefix':'Plane YZ Selection'
-		'body':'G19'
-	'Inch Units - USCS':
-		'prefix':'USCS Units'
-		'body':'G20'
-	'Inch Units - Imperial':
-		'prefix':'Imperial Units'
-		'body':'G20'
-	'Inch Units - Inches':
-		'prefix':'Inches'
-		'body':'G20'
-	'Metric - Metric':
-		'prefix':'Metric Units'
-		'body':'G21'
-	'Metric - Millimeters':
-		'prefix':'Millimeters'
-		'body':'G21'
-	'Machine Zero':
-		'prefix':'Home Machine Zero'
-		'body':'G28'
-	'Machine Zero Secondary':
-		'prefix':'Home Machine Zero Secondary'
-		'body':'G30'
-	'Skip function':
-		'prefix':'Skip function'
-		'body':'G31'
-	'Constant Pitch Threading':
-		'prefix':'Threading (constant pitch)'
-		'body':'G33'
-	'Variable Pitch Threading':
-		'prefix':'Threading (variable pitch)'
-		'body':'G34'
-	#Compensation Functions
-	'Tool Radius Compensation Cancel':
-		'prefix':'CRC Cancel'
-		'body':'G40'
-	'Tool Radius Compensation Left':
-		'prefix':'CRC Left'
-		'body':'G41'
-	'Tool Radius Compensation Right':
-		'prefix':'CRC Right'
-		'body':'G42'
-	'Tool Height Offest Negative':
-		'prefix':'CHC Negative'
-		'body':'G43'
-	'Tool Height Offset Positive':
-		'prefix':'CHC Positive'
-		'body':'G44'
-	'Axis Offset Single Increase':
-		'prefix':'Axis Offset Single Increase'
-		'body':'G45'
-	'Axis Offset Single Decrease':
-		'prefix':'Axis Offset Single Decrease'
-		'body':'G46'
-	'Axis Offset Double Increase':
-		'prefix':'Axis Offset Double Increase'
-		'body':'G47'
-	'Axis Offset Double Decrease':
-		'prefix':'Axis Offset Double Decrease'
-		'body':'G48'
-	'Tool Height Offset Cancel':
-		'prefix':'Tool Height Offset Cancel'
-		'body':'G49'
-	'Tool Length Measurement':
-		'prefix':'CHC Measurement'
-		'body':'G100'
-		
-	'Maximum Spindle Speed':
-		'prefix':'Spindle Speed Max'
-		'body':'G50 S$1'
-	#Coordinate Functions
-	'Scaling Function Cancel':
-		'prefix':'Scaling Function Cancel'
-		'body':'G50'
-	'Position Register':
-		'prefix':'Position Register (Vector partzero to tool tip)'
-		'body':'G92'
-		
-	'Local Coordinate System - LCS':
-		'prefix':'LCS'
-		'body':'G52'
-	'Local Coordinate System - Local Coordinate System':
-		'prefix':'Local Coordinate System'
-		'body':'G52'
-	'Machine Coordinate System':
-		'prefix':'Machine Coordinate System'
-		'body':'G53'
-	'Work Coordinate System - WCS':
-		'prefix':'WCS'
-		'body':'G54\nG55\nG56\nG57\nG58\nG59'
-	'Work Coordinate System - Work Coordinate System':
-		'prefix':'Work Coordinate System'
-		'body':'G54\nG55\nG56\nG57\nG58\nG59'
-	'Work Coordinate System Extended - WCSX'
-		'prefix':'WCSX'
-		'body':'G54.1 P1'
-	'Work Coordinate System Extended - Work Coordinate System Extended'
-		'prefix':'Work Coordinate System Extended'
-		'body':'G54.1 P1'
-		
-	'Rotate Coordinate System':
-		'prefix':'Rotate Coordinate System'
-		'body':'G68 R$1'
-	'Rotate Coordinate System Cancel':
-		'prefix':'Rotate Coordinate System Cancel'
-		'body':'G69'
-		
-	'Absolute Coordinates - Absolute Coordinates':
-		'prefix':'Absolute Coordinates'
-		'body':'G90'
-	'Absolute Coordinates - COORD REL':
-		'prefix':'COORD REL'
-		'body':'G90'
-	'Relative Coordinates - Relative Coordinates':
-		'prefix':'Relative Coordinates'
-		'body':'G91'
-	'Relative Coordinates - COORD ABS':
-		'prefix':'COORD ABS'
-		'body':'G91'
-		
-	'Exact stop check (modal)':
-		'prefix':'Exact stop check (modal)'
-		'body':'G61'
-	'Automatic Corner Override':
-		'prefix':'Automatic Corner Override'
-		'body':'G62'
-	'Exact Stop Check Cancel':
-		'prefix':'Exact Stop Check Cancel'
-		'body':'G64'
-	#Canned Cycles General
-	'CS Return to Initial Z':
-		'prefix':'CS return Z'
-		'body':'G98'
-	'Cancel Canned Cycle - Cancel Canned Cycle':
-		'prefix':'Cancel Canned Cycle'
-		'body':'G80'
-	'Cancel Canned Cycle - Cancel':
-		'prefix':'Cancel'
-		'body':'G80'
-	'CS return to R level':
-		'prefix':'CS return R'
-		'body':'G99'
-	#Drilling Cycles
-	'FC Drill Peck':
-		'prefix':'Drill Peck'
-		'body':'G73'
-	'Simple Drilling Cycle':
-		'prefix':'Drill'
-		'body':'G81'
-	'Drilling Cycle With Dwell':
-		'prefix':'Drill (Dwell)'
-		'body':'G82 P$1'
-	'Drilling Cycle With Retractions':
-		'prefix':'Drill (Retractions)'
-		'body':'G83'
-	#Threading Cycles
-	'Threading (milling)':
-		'prefix':'Threading (milling)'
-		'body':'G74'
-	'Threading (left-handed)':
-		'prefix':'Threading (left-handed)'
-		'body':'G74'
-	'Fine Boring Cycle':
-		'prefix':'Boring (fine)'
-		'body':'G76'
-	'Threading (right-handed)':
-		'prefix':'Threading (right-handed)'
-		'body':'G84'
-	'Threading (right-handed, rigid)':
-		'prefix':'Threading (right-handed, rigid)'
-		'body':'G84.2'
-	'Threading (left-handed, rigid)':
-		'prefix':'Threading (left-handed, rigid)'
-		'body':'G84.3'
-	#Boring Cycles
-	'Boring Cycle (feed in/feed out)':
-		'prefix':'Boring (feed in/feed out)'
-		'body':'G85'
-	'Boring Cycle (feed in/stop/rapid out)':
-		'prefix':'Boring (feed in/stop/rapid out)'
-		'body':'G86'
-	'Boring Cycle (backboring)':
-		'prefix':'Boring (backboring)'
-		'body':'G87'
-	'Boring Cycle (feed in/spindle stop/manual operation)':
-		'prefix':'Boring (feed in/spindle stop/manual operation)'
-		'body':'G88'
-	'Boring Cycle (feed in/dwell/feed out)':
-		'prefix':'Boring (feed in/dwell/feed out)'
-		'body':'G89'
-	#Feedrate
-	'Feedrate per Minute':
-		'prefix':'Feedrate (minute)'
-		'body':'G94'
-	'Feedrate per Revolution':
-		'prefix':'Feedrate (revolution)'
-		'body':'G95'
-	'Constant Surface Speed':
-		'prefix':'Surface Speed Constant'
-		'body':'G96'
-	'Constant Spindle Speed':
-		'prefix':'Spindle Speed Constant'
-		'body':'G97'
-	
+  ## G codes
+  #Basic Commands
+  'Rapid  positioning - Rapid':
+    'prefix':'Rapid'
+    'body':'G00'
+  'Rapid positioning - Move_rapid':
+    'prefix':'Move_rapid'
+    'body':'G00'
+  'Linear Interpolation':
+    'prefix':'Move'
+    'body':'G01'
+  'Circular Interpolation (Clockwise)':
+    'prefix':'ARC CW'
+    'body':'G02'
+  'Circular Interpolation (Anticlockwise)':
+    'prefix':'ARC AW'
+    'body':'G03'
+  'Dwell':
+    'prefix':'Dwell'
+    'body':'G04'
+  'High Precision Contour Control':
+    'prefix':'HPCC'
+    'body':'G05 P10000'
+  'AI Advanced Preview Control':
+    'prefix':'AI Advanced Preview Control'
+    'body':'G05.1 Q1'
+  'NURBS Machining':
+    'prefix':'NURBS Machining'
+    'body':'G06.1'
+  'Imaginary axis designation':
+    'prefix':'Imaginary axis designation'
+    'body':'G07'
+  'Exact stop check (non modal)':
+    'prefix':'Exact stop check (non modal)'
+    'body':'G09'
+  'Programmable data input':
+    'prefix':'Programmable data input'
+    'body':'G10'
+  'Data write cancel':
+    'prefix':'Data write cancel'
+    'body':'G11'
+  'Full Circle Interpolation (Clockwise)':
+    'prefix':'Circle CW'
+    'body':'G12'
+  'Full Circle Interpolation (Anticlockwise)':
+    'prefix':'Circle AW'
+    'body':'G13'
+  'XY Plane Selection':
+    'prefix':'Plane XY Selection'
+    'body':'G17'
+  'ZX Plane Selection':
+    'prefix':'Plane ZX Selection'
+    'body':'G18'
+  'YZ Plane Selection':
+    'prefix':'Plane YZ Selection'
+    'body':'G19'
+  'Inch Units - USCS':
+    'prefix':'USCS Units'
+    'body':'G20'
+  'Inch Units - Imperial':
+    'prefix':'Imperial Units'
+    'body':'G20'
+  'Inch Units - Inches':
+    'prefix':'Inches'
+    'body':'G20'
+  'Metric - Metric':
+    'prefix':'Metric Units'
+    'body':'G21'
+  'Metric - Millimeters':
+    'prefix':'Millimeters'
+    'body':'G21'
+  'Machine Zero':
+    'prefix':'Home Machine Zero'
+    'body':'G28'
+  'Machine Zero Secondary':
+    'prefix':'Home Machine Zero Secondary'
+    'body':'G30'
+  'Skip function':
+    'prefix':'Skip function'
+    'body':'G31'
+  'Constant Pitch Threading':
+    'prefix':'Threading (constant pitch)'
+    'body':'G33'
+  'Variable Pitch Threading':
+    'prefix':'Threading (variable pitch)'
+    'body':'G34'
+  #Compensation Functions
+  'Tool Radius Compensation Cancel':
+    'prefix':'CRC Cancel'
+    'body':'G40'
+  'Tool Radius Compensation Left':
+    'prefix':'CRC Left'
+    'body':'G41'
+  'Tool Radius Compensation Right':
+    'prefix':'CRC Right'
+    'body':'G42'
+  'Tool Height Offest Negative':
+    'prefix':'CHC Negative'
+    'body':'G43'
+  'Tool Height Offset Positive':
+    'prefix':'CHC Positive'
+    'body':'G44'
+  'Axis Offset Single Increase':
+    'prefix':'Axis Offset Single Increase'
+    'body':'G45'
+  'Axis Offset Single Decrease':
+    'prefix':'Axis Offset Single Decrease'
+    'body':'G46'
+  'Axis Offset Double Increase':
+    'prefix':'Axis Offset Double Increase'
+    'body':'G47'
+  'Axis Offset Double Decrease':
+    'prefix':'Axis Offset Double Decrease'
+    'body':'G48'
+  'Tool Height Offset Cancel':
+    'prefix':'Tool Height Offset Cancel'
+    'body':'G49'
+  'Tool Length Measurement':
+    'prefix':'CHC Measurement'
+    'body':'G100'
+#
+  'Maximum Spindle Speed':
+    'prefix':'Spindle Speed Max'
+    'body':'G50 S$1'
+  #Coordinate Functions
+  'Scaling Function Cancel':
+    'prefix':'Scaling Function Cancel'
+    'body':'G50'
+  'Position Register':
+    'prefix':'Position Register (Vector partzero to tool tip)'
+    'body':'G92'
+#
+  'Local Coordinate System - LCS':
+    'prefix':'LCS'
+    'body':'G52'
+  'Local Coordinate System - Local Coordinate System':
+    'prefix':'Local Coordinate System'
+    'body':'G52'
+  'Machine Coordinate System':
+    'prefix':'Machine Coordinate System'
+    'body':'G53'
+  'Work Coordinate System - WCS':
+    'prefix':'WCS'
+    'body':'G54\nG55\nG56\nG57\nG58\nG59'
+  'Work Coordinate System - Work Coordinate System':
+    'prefix':'Work Coordinate System'
+    'body':'G54\nG55\nG56\nG57\nG58\nG59'
+  'Work Coordinate System Extended - WCSX':
+    'prefix':'WCSX'
+    'body':'G54.1 P1'
+  'Work Coordinate System Extended - Work Coordinate System Extended':
+    'prefix':'Work Coordinate System Extended'
+    'body':'G54.1 P1'
+#
+  'Rotate Coordinate System':
+    'prefix':'Rotate Coordinate System'
+    'body':'G68 R$1'
+  'Rotate Coordinate System Cancel':
+    'prefix':'Rotate Coordinate System Cancel'
+    'body':'G69'
+#
+  'Absolute Coordinates - Absolute Coordinates':
+    'prefix':'Absolute Coordinates'
+    'body':'G90'
+  'Absolute Coordinates - COORD REL':
+    'prefix':'COORD REL'
+    'body':'G90'
+  'Relative Coordinates - Relative Coordinates':
+    'prefix':'Relative Coordinates'
+    'body':'G91'
+  'Relative Coordinates - COORD ABS':
+    'prefix':'COORD ABS'
+    'body':'G91'
+#
+  'Exact stop check (modal)':
+    'prefix':'Exact stop check (modal)'
+    'body':'G61'
+  'Automatic Corner Override':
+    'prefix':'Automatic Corner Override'
+    'body':'G62'
+  'Exact Stop Check Cancel':
+    'prefix':'Exact Stop Check Cancel'
+    'body':'G64'
+  #Canned Cycles General
+  'CS Return to Initial Z':
+    'prefix':'CS return Z'
+    'body':'G98'
+  'Cancel Canned Cycle - Cancel Canned Cycle':
+    'prefix':'Cancel Canned Cycle'
+    'body':'G80'
+  'Cancel Canned Cycle - Cancel':
+    'prefix':'Cancel'
+    'body':'G80'
+  'CS return to R level':
+    'prefix':'CS return R'
+    'body':'G99'
+  #Drilling Cycles
+  'FC Drill Peck':
+    'prefix':'Drill Peck'
+    'body':'G73'
+  'Simple Drilling Cycle':
+    'prefix':'Drill'
+    'body':'G81'
+  'Drilling Cycle With Dwell':
+    'prefix':'Drill (Dwell)'
+    'body':'G82 P$1'
+  'Drilling Cycle With Retractions':
+    'prefix':'Drill (Retractions)'
+    'body':'G83'
+  #Threading Cycles
+  'Threading (milling)':
+    'prefix':'Threading (milling)'
+    'body':'G74'
+  'Threading (left-handed)':
+    'prefix':'Threading (left-handed)'
+    'body':'G74'
+  'Fine Boring Cycle':
+    'prefix':'Boring (fine)'
+    'body':'G76'
+  'Threading (right-handed)':
+    'prefix':'Threading (right-handed)'
+    'body':'G84'
+  'Threading (right-handed, rigid)':
+    'prefix':'Threading (right-handed, rigid)'
+    'body':'G84.2'
+  'Threading (left-handed, rigid)':
+    'prefix':'Threading (left-handed, rigid)'
+    'body':'G84.3'
+  #Boring Cycles
+  'Boring Cycle (feed in/feed out)':
+    'prefix':'Boring (feed in/feed out)'
+    'body':'G85'
+  'Boring Cycle (feed in/stop/rapid out)':
+    'prefix':'Boring (feed in/stop/rapid out)'
+    'body':'G86'
+  'Boring Cycle (backboring)':
+    'prefix':'Boring (backboring)'
+    'body':'G87'
+  'Boring Cycle (feed in/spindle stop/manual operation)':
+    'prefix':'Boring (feed in/spindle stop/manual operation)'
+    'body':'G88'
+  'Boring Cycle (feed in/dwell/feed out)':
+    'prefix':'Boring (feed in/dwell/feed out)'
+    'body':'G89'
+  #Feedrate
+  'Feedrate per Minute':
+    'prefix':'Feedrate (minute)'
+    'body':'G94'
+  'Feedrate per Revolution':
+    'prefix':'Feedrate (revolution)'
+    'body':'G95'
+  'Constant Surface Speed':
+    'prefix':'Surface Speed Constant'
+    'body':'G96'
+  'Constant Spindle Speed':
+    'prefix':'Spindle Speed Constant'
+    'body':'G97'
+#
